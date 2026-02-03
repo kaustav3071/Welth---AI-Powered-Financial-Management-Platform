@@ -1,0 +1,190 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id                     String             @id @default(uuid())
+  clerkUserId            String             @unique
+  email                  String             @unique
+  name                   String?
+  imageUrl               String?
+  createdAt              DateTime           @default(now())
+  updatedAt              DateTime           @updatedAt
+  accounts               Account[]
+  budgets                Budget?
+  friendRequestsReceived Friendship[]       @relation("FriendAddressee")
+  friendRequestsSent     Friendship[]       @relation("FriendRequester")
+  splitParticipations    SplitParticipant[] @relation("SplitParticipant")
+  splitRequestsCreated   SplitRequest[]     @relation("SplitRequester")
+  transactions           Transaction[]
+
+  @@map("users")
+}
+
+model Account {
+  id                       String             @id @default(uuid())
+  name                     String
+  type                     AccountType
+  balance                  Decimal            @default(0)
+  isDefault                Boolean            @default(false)
+  userId                   String
+  createdAt                DateTime           @default(now())
+  updatedAt                DateTime           @updatedAt
+  minimumBalance           Decimal            @default(250)
+  monthlyBudget            Decimal            @default(5000)
+  user                     User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  splitParticipations      SplitParticipant[] @relation("ParticipantAccount")
+  splitRequestsAsRequester SplitRequest[]     @relation("RequesterAccount")
+  transactions             Transaction[]
+
+  @@index([userId])
+  @@map("accounts")
+}
+
+model Transaction {
+  id                String             @id @default(uuid())
+  type              TransactionType
+  amount            Decimal
+  description       String?
+  date              DateTime
+  category          String
+  receiptUrl        String?
+  isRecurring       Boolean            @default(false)
+  recurringInterval RecurringInterval?
+  nextRecurringDate DateTime?
+  lastProcessed     DateTime?
+  status            TransactionStatus  @default(COMPLETED)
+  userId            String
+  accountId         String
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  excludeFromBudget Boolean            @default(false)
+  account           Account            @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([accountId])
+  @@index([accountId, date])
+  @@index([accountId, type])
+  @@index([userId, date])
+  @@map("transactions")
+}
+
+model Budget {
+  id            String    @id @default(uuid())
+  amount        Decimal
+  lastAlertSent DateTime?
+  userId        String    @unique
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("budgets")
+}
+
+model Friendship {
+  id          String           @id @default(uuid())
+  requesterId String
+  addresseeId String
+  status      FriendshipStatus @default(PENDING)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  addressee   User             @relation("FriendAddressee", fields: [addresseeId], references: [id], onDelete: Cascade)
+  requester   User             @relation("FriendRequester", fields: [requesterId], references: [id], onDelete: Cascade)
+
+  @@unique([requesterId, addresseeId])
+  @@index([requesterId])
+  @@index([addresseeId])
+  @@map("friendships")
+}
+
+model SplitRequest {
+  id                 String             @id @default(uuid())
+  originalAmount     Decimal
+  splitAmount        Decimal
+  description        String?
+  category           String
+  date               DateTime
+  status             SplitStatus        @default(PENDING)
+  rejectedAmount     Decimal?
+  userPaidFull       Boolean            @default(false)
+  requesterId        String
+  requesterAccountId String
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  participants       SplitParticipant[]
+  requesterAccount   Account            @relation("RequesterAccount", fields: [requesterAccountId], references: [id], onDelete: Cascade)
+  requester          User               @relation("SplitRequester", fields: [requesterId], references: [id], onDelete: Cascade)
+
+  @@index([requesterId])
+  @@index([requesterAccountId])
+  @@map("split_requests")
+}
+
+model SplitParticipant {
+  id             String       @id @default(uuid())
+  splitRequestId String
+  userId         String
+  amount         Decimal
+  accountId      String?
+  status         SplitStatus  @default(PENDING)
+  approvedAt     DateTime?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  account        Account?     @relation("ParticipantAccount", fields: [accountId], references: [id], onDelete: Cascade)
+  splitRequest   SplitRequest @relation(fields: [splitRequestId], references: [id], onDelete: Cascade)
+  user           User         @relation("SplitParticipant", fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([splitRequestId, userId])
+  @@index([userId])
+  @@index([splitRequestId])
+  @@map("split_participants")
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+enum AccountType {
+  CURRENT
+  SAVINGS
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+enum RecurringInterval {
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+enum FriendshipStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  BLOCKED
+}
+
+enum SplitStatus {
+  PENDING
+  APPROVED
+  DECLINED
+  PARTIALLY_APPROVED
+  REJECTED
+  COMPLETED
+  CANCELLED
+  USER_PAID_FULL
+}
