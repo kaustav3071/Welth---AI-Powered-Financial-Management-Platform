@@ -1,687 +1,549 @@
-# Welth - AI-Powered Financial Management Platform
-## Comprehensive Technical Documentation
+<div align="center">
+  <h1>💰 Welth</h1>
+  <p><strong>AI-Powered Financial Management Platform</strong></p>
+  
+  <p>
+    <a href="#features">Features</a> •
+    <a href="#tech-stack">Tech Stack</a> •
+    <a href="#getting-started">Getting Started</a> •
+    <a href="#usage">Usage</a> •
+    <a href="#api">API</a>
+  </p>
+
+  ![Next.js](https://img.shields.io/badge/Next.js-15.3.3-black?style=for-the-badge&logo=next.js)
+  ![React](https://img.shields.io/badge/React-19.0.0-blue?style=for-the-badge&logo=react)
+  ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue?style=for-the-badge&logo=postgresql)
+  ![Prisma](https://img.shields.io/badge/Prisma-6.11.0-2D3748?style=for-the-badge&logo=prisma)
+  ![TailwindCSS](https://img.shields.io/badge/Tailwind-4.x-38B2AC?style=for-the-badge&logo=tailwind-css)
+</div>
 
 ---
 
-## Table of Contents
-1. [Project Overview](#project-overview)
-2. [Technology Stack](#technology-stack)
-3. [Architecture & Design](#architecture--design)
-4. [Database Design](#database-design)
-5. [Core Features](#core-features)
-6. [AI Integration](#ai-integration)
-7. [API Architecture](#api-architecture)
-8. [Security & Authentication](#security--authentication)
-9. [Deployment & Infrastructure](#deployment--infrastructure)
-10. [Performance Optimizations](#performance-optimizations)
-11. [Future Enhancements](#future-enhancements)
+## 📖 About
+
+**Welth** is a cutting-edge financial management platform that leverages artificial intelligence to revolutionize personal finance tracking. Built with modern web technologies, Welth offers intelligent insights, automated transaction processing, multi-modal input methods, and comprehensive financial analytics to help users take control of their finances.
+
+### ✨ Key Highlights
+
+- 🤖 **AI-Powered**: Smart transaction parsing using Google Gemini 1.5 Flash
+- 📱 **Multi-Modal Input**: Voice, SMS parsing, receipt scanning, and manual entry
+- 👥 **Social Finance**: Split expenses seamlessly with friends
+- 📊 **Real-Time Analytics**: Advanced charts and spending insights
+- 🔔 **Smart Alerts**: Automated budget warnings and notifications
+- 🔒 **Secure**: Enterprise-grade authentication with Clerk
 
 ---
 
-## Project Overview
+## 🚀 Features
 
-**Welth** is a cutting-edge, AI-powered financial management platform designed to revolutionize personal finance management. Built with modern web technologies and artificial intelligence, Welth provides users with intelligent insights, automated transaction processing, and comprehensive financial tracking capabilities.
+### 💳 Transaction Management
+- **Multiple Input Methods**: Manual entry, voice input, SMS parsing, and receipt scanning
+- **Smart Categorization**: AI-powered automatic category detection
+- **Bulk Operations**: Import and manage transactions efficiently
+- **Receipt OCR**: Extract data from receipt images
 
-### Key Value Propositions
-- **AI-Driven Insights**: Leverages Google's Gemini AI for smart financial analysis
-- **Multi-Modal Input**: Supports voice, SMS parsing, and receipt scanning
-- **Social Finance**: Split expenses with friends seamlessly
-- **Real-time Analytics**: Advanced charts and spending pattern analysis
-- **Automated Workflows**: Background processing for recurring transactions and budget alerts
+### 📊 Dashboard & Analytics
+- **Real-Time Overview**: Today's spending, monthly breakdown, and balance monitoring
+- **Interactive Charts**: Pie charts, bar graphs, and trend analysis
+- **Expense Tracking**: Category-wise spending visualization
+- **Budget Progress**: Visual budget monitoring with alerts
 
----
+### 👥 Split Expenses
+- **Friend Management**: Add and manage friends for splitting
+- **Split Requests**: Create, approve, and track split expenses
+- **Automatic Calculations**: Smart amount distribution
+- **Payment Tracking**: Keep track of who owes what
 
-## Technology Stack
+### 💰 Budget Management
+- **Monthly Budgets**: Set category-specific budgets
+- **Real-Time Tracking**: Monitor spending against budgets
+- **Alert System**: Automated notifications for budget breaches
+- **Historical Analysis**: Compare budget performance over time
 
-### Frontend Technologies
+### 🏦 Account Management
+- **Multi-Account Support**: Manage current and savings accounts
+- **Balance Tracking**: Real-time balance updates
+- **Minimum Balance Alerts**: Get notified when balance is low
+- **Account Statistics**: Detailed insights per account
 
-#### **Next.js 15.3.3** - React Framework
-**Why Next.js?**
-- **Server-Side Rendering (SSR)**: Improved SEO and initial load performance
-- **App Router**: Modern routing system with nested layouts
-- **Server Actions**: Direct database operations without API routes
-- **Built-in Optimizations**: Image optimization, code splitting, and caching
-- **Full-Stack Capabilities**: Unified development experience
-
-#### **React 19.0.0** - UI Library
-**Why React?**
-- **Component-Based Architecture**: Reusable and maintainable code
-- **Virtual DOM**: Efficient rendering and updates
-- **Rich Ecosystem**: Extensive third-party integrations
-- **Developer Experience**: Excellent tooling and debugging
-
-#### **Tailwind CSS 4.x** - Styling Framework
-**Why Tailwind?**
-- **Utility-First**: Rapid UI development
-- **Responsive Design**: Mobile-first approach
-- **Customizable**: Easy theme customization
-- **Performance**: Purged CSS for optimal bundle size
-
-#### **Radix UI** - Component Library
-**Why Radix UI?**
-- **Accessibility**: WCAG compliant components
-- **Headless Components**: Complete styling control
-- **TypeScript Support**: Full type safety
-- **Modular**: Import only what you need
-
-### Backend Technologies
-
-#### **PostgreSQL** - Primary Database
-**Why PostgreSQL?**
-- **ACID Compliance**: Data integrity and reliability
-- **Advanced Features**: JSON support, full-text search, complex queries
-- **Scalability**: Handles high concurrent connections
-- **Decimal Precision**: Perfect for financial calculations
-- **Extensions**: Rich ecosystem of extensions
-- **Performance**: Excellent query optimization
-- **Open Source**: Cost-effective and well-supported
-
-#### **Prisma 6.11.0** - ORM
-**Why Prisma?**
-- **Type Safety**: Auto-generated TypeScript types
-- **Database Agnostic**: Easy migration between databases
-- **Developer Experience**: Intuitive query API
-- **Schema Management**: Version-controlled database changes
-- **Performance**: Optimized queries and connection pooling
-
-#### **Clerk** - Authentication
-**Why Clerk?**
-- **Developer-Friendly**: Easy integration and customization
-- **Security**: Industry-standard security practices
-- **Multi-Factor Authentication**: Built-in MFA support
-- **Social Logins**: Google, GitHub, etc.
-- **User Management**: Comprehensive user lifecycle management
-
-### AI & Automation
-
-#### **Google Gemini 1.5 Flash** - AI Engine
-**Why Gemini?**
-- **Multimodal Capabilities**: Text, image, and voice processing
-- **Cost-Effective**: Competitive pricing for AI services
-- **Fast Response**: Optimized for real-time applications
-- **Context Understanding**: Excellent at parsing financial data
-- **Integration**: Easy API integration
-
-#### **Inngest** - Background Jobs
-**Why Inngest?**
-- **Reliable Processing**: Guaranteed job execution
-- **Event-Driven**: Reactive architecture
-- **Developer Experience**: Easy debugging and monitoring
-- **Scalability**: Handles high-volume processing
-
-### Additional Technologies
-
-#### **Recharts** - Data Visualization
-- **React Integration**: Native React components
-- **Responsive**: Adapts to different screen sizes
-- **Customizable**: Extensive styling options
-- **Performance**: Optimized for large datasets
-
-#### **React Hook Form + Zod** - Form Management
-- **Type Safety**: Runtime validation with Zod
-- **Performance**: Minimal re-renders
-- **Developer Experience**: Easy form handling
-- **Validation**: Comprehensive validation rules
-
-#### **Sonner** - Toast Notifications
-- **Modern UI**: Beautiful notification design
-- **Accessibility**: Screen reader friendly
-- **Customizable**: Easy theming and positioning
+### 🤖 AI Features
+- **Transaction Parsing**: Natural language understanding for transactions
+- **Receipt Scanning**: OCR-based data extraction
+- **Financial Insights**: AI-generated spending analysis
+- **Voice Processing**: Speech-to-text transaction creation
 
 ---
 
-## Architecture & Design
+## 🛠️ Tech Stack
 
-### System Architecture
+### Frontend
+- **[Next.js 15.3.3](https://nextjs.org/)** - React framework with App Router
+- **[React 19.0.0](https://react.dev/)** - UI library
+- **[Tailwind CSS 4.x](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Radix UI](https://www.radix-ui.com/)** - Accessible component primitives
+- **[Recharts](https://recharts.org/)** - Data visualization library
+- **[Lucide React](https://lucide.dev/)** - Beautiful icon library
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend      │    │   Backend       │    │   External      │
-│   (Next.js)     │◄──►│   (Server       │◄──►│   Services      │
-│                 │    │    Actions)     │    │                 │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-         │                       │                       │
-         │                       │                       │
-         ▼                       ▼                       ▼
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Clerk Auth    │    │   PostgreSQL    │    │   Gemini AI     │
-│                 │    │   + Prisma      │    │   + Inngest     │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
+### Backend
+- **[PostgreSQL](https://www.postgresql.org/)** - Primary database
+- **[Prisma 6.11.0](https://www.prisma.io/)** - Next-generation ORM
+- **[Clerk](https://clerk.com/)** - Authentication and user management
+- **[Google Gemini AI](https://ai.google.dev/)** - AI engine for smart features
+- **[Inngest](https://www.inngest.com/)** - Background job processing
+- **[Resend](https://resend.com/)** - Email delivery service
 
-### Design Patterns
-
-#### **Server Actions Pattern**
-```javascript
-// Direct database operations without API routes
-export async function createTransaction(data) {
-  const { userId } = await auth();
-  // Direct database operation
-  const transaction = await db.transaction.create({ data });
-  return { success: true, data: transaction };
-}
-```
-
-#### **Component Composition**
-```javascript
-// Reusable UI components with proper separation
-<Card>
-  <CardHeader>
-    <CardTitle>Dashboard</CardTitle>
-  </CardHeader>
-  <CardContent>
-    <TodaysSpending transactions={transactions} />
-  </CardContent>
-</Card>
-```
-
-#### **Error Boundaries**
-- Graceful error handling throughout the application
-- User-friendly error messages
-- Fallback UI components
+### Additional Tools
+- **[React Hook Form](https://react-hook-form.com/)** - Form management
+- **[Zod](https://zod.dev/)** - Schema validation
+- **[Arcjet](https://arcjet.com/)** - Security and rate limiting
+- **[React Email](https://react.email/)** - Email template builder
+- **[Sonner](https://sonner.emilkowal.ski/)** - Toast notifications
 
 ---
 
-## Database Design
+## 📋 Prerequisites
 
-### Entity Relationship Diagram
+Before you begin, ensure you have the following installed:
 
-```
-Users (1) ──── (N) Accounts
-  │                │
-  │                │
-  │ (1)            │ (1)
-  │                │
-  │ (N)            │ (N)
-  │                │
-  ▼                ▼
-Transactions ──── SplitRequests
-  │                    │
-  │                    │
-  │ (1)                │ (N)
-  │                    │
-  ▼                    ▼
-Budgets            SplitParticipants
-  │                    │
-  │ (1)                │ (N)
-  │                    │
-  ▼                    ▼
-Friendships ─────────────┘
-```
+- **Node.js** (v18 or higher)
+- **npm** / **yarn** / **pnpm** / **bun**
+- **PostgreSQL** database
+- **Git**
 
-### Key Database Features
+### Required API Keys
 
-#### **Decimal Precision**
-```sql
--- Financial amounts with 30 decimal places
-balance DECIMAL(65,30) NOT NULL DEFAULT 0
-```
-
-#### **Indexes for Performance**
-```sql
--- Optimized queries for common operations
-@@index([userId])
-@@index([accountId, date])
-@@index([userId, date])
-```
-
-#### **Enum Types**
-```sql
--- Type-safe status and category management
-CREATE TYPE "TransactionType" AS ENUM ('INCOME', 'EXPENSE');
-CREATE TYPE "SplitStatus" AS ENUM ('PENDING', 'APPROVED', 'DECLINED');
-```
-
-### Why PostgreSQL?
-
-1. **Financial Data Integrity**
-   - ACID transactions ensure data consistency
-   - Decimal type prevents floating-point errors
-   - Constraint validation at database level
-
-2. **Performance**
-   - Advanced indexing strategies
-   - Query optimization
-   - Connection pooling support
-
-3. **Scalability**
-   - Horizontal and vertical scaling options
-   - Partitioning support for large datasets
-   - Replication capabilities
-
-4. **Advanced Features**
-   - JSON support for flexible data storage
-   - Full-text search for transaction descriptions
-   - Custom functions and triggers
+You'll need accounts and API keys for:
+- [Clerk](https://clerk.com/) - Authentication
+- [Google AI Studio](https://makersuite.google.com/app/apikey) - Gemini API
+- [Supabase](https://supabase.com/) or PostgreSQL hosting
+- [Resend](https://resend.com/) - Email service
+- [Inngest](https://www.inngest.com/) - Background jobs (optional for local dev)
+- [Arcjet](https://arcjet.com/) - Security (optional for local dev)
 
 ---
 
-## Core Features
+## 🚀 Getting Started
 
-### 1. Dashboard & Analytics
+### 1. Clone the Repository
 
-#### **Real-time Financial Overview**
-- Today's spending tracking
-- Monthly expense breakdown
-- Account balance monitoring
-- Budget progress visualization
-
-#### **Advanced Charts**
-```javascript
-// Pie charts for expense categorization
-const pieChartData = expensesByCategory.map(([category, amount]) => ({
-  name: getCategoryName(category),
-  value: amount,
-}));
+```bash
+git clone https://github.com/kaustav3071/Welth---AI-Powered-Financial-Management-Platform.git
+cd Welth---AI-Powered-Financial-Management-Platform/my-app
 ```
 
-### 2. Transaction Management
+### 2. Install Dependencies
 
-#### **Multi-Modal Input**
-- **Manual Entry**: Traditional form-based input
-- **SMS Parsing**: AI-powered SMS transaction extraction
-- **Voice Input**: Speech-to-text transaction creation
-- **Receipt Scanning**: OCR-based receipt processing
-
-#### **Smart Categorization**
-```javascript
-// AI-powered category detection
-const prompt = `
-  Parse this input and extract transaction information:
-  - Amount, Type, Category, Description, Date
-  Input: "${smsText}"
-`;
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
 ```
 
-### 3. Split Expenses
+### 3. Set Up Environment Variables
 
-#### **Social Finance Features**
-- Friend management system
-- Split request creation and approval
-- Automatic balance deduction
-- Payment tracking
+Create a `.env` file in the root of the `my-app` directory:
 
-#### **Complex Transaction Handling**
-```javascript
-// Database transaction for split creation
-const splitRequest = await db.$transaction(async (tx) => {
-  const newSplitRequest = await tx.splitRequest.create({...});
-  await tx.account.update({...});
-  await tx.transaction.create({...});
-  return newSplitRequest;
-});
+```env
+# Database (PostgreSQL)
+DATABASE_URL="postgresql://username:password@host:port/database"
+DIRECT_URL="postgresql://username:password@host:port/database"
+
+# Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_your_key"
+CLERK_SECRET_KEY="sk_test_your_key"
+NEXT_PUBLIC_CLERK_SIGN_IN_URL="/sign-in"
+NEXT_PUBLIC_CLERK_SIGN_UP_URL="/sign-up"
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL="/dashboard"
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL="/dashboard"
+
+# Google Gemini AI
+GEMINI_API_KEY="your_gemini_api_key"
+
+# Resend (Email)
+RESEND_API_KEY="your_resend_api_key"
+
+# Arcjet (Security - Optional in dev)
+ARCJET_KEY="your_arcjet_key"
+
+# Inngest (Background Jobs - Optional for local dev)
+INNGEST_EVENT_KEY="your_inngest_event_key"
+INNGEST_SIGNING_KEY="your_inngest_signing_key"
 ```
 
-### 4. Budget Management
+### 4. Set Up the Database
 
-#### **Intelligent Budget Tracking**
-- Monthly budget setting
-- Real-time spending monitoring
-- Alert system for budget breaches
-- Category-wise budget allocation
+```bash
+# Generate Prisma Client
+npx prisma generate
 
-#### **Automated Alerts**
-```javascript
-// Inngest function for budget monitoring
-export const checkBudgetAlerts = inngest.createFunction(
-  { id: "check-budget-alerts" },
-  { cron: "0 9 * * *" }, // Daily at 9 AM
-  async ({ step }) => {
-    // Check all users' budget status
-  }
-);
+# Run database migrations
+npx prisma migrate deploy
+
+# (Optional) Seed the database
+npx prisma db seed
 ```
 
-### 5. Account Management
+### 5. Run the Development Server
 
-#### **Multi-Account Support**
-- Current and savings accounts
-- Balance tracking
-- Minimum balance alerts
-- Account-specific budgets
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 ---
 
-## AI Integration
+## 📁 Project Structure
 
-### 1. Transaction Parsing
-
-#### **SMS Processing**
-```javascript
-// Gemini AI for SMS parsing
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-const result = await model.generateContent(prompt);
 ```
-
-**Features:**
-- Natural language understanding
-- Date conversion (relative to absolute)
-- Category mapping
-- Amount extraction
-- Merchant identification
-
-### 2. Receipt Scanning
-
-#### **OCR Integration**
-- Image text extraction
-- Data validation and cleaning
-- Automatic categorization
-- Duplicate detection
-
-### 3. Financial Insights
-
-#### **Monthly Reports**
-```javascript
-// AI-generated financial insights
-const insights = await generateFinancialInsights(stats, month);
+my-app/
+├── actions/              # Server actions for data operations
+│   ├── account.js
+│   ├── budget.js
+│   ├── dashboard.js
+│   ├── transaction.js
+│   └── send-email.js
+├── app/                  # Next.js App Router
+│   ├── (auth)/          # Authentication pages
+│   ├── (main)/          # Protected pages
+│   ├── api/             # API routes
+│   ├── lib/             # App-specific utilities
+│   ├── globals.css
+│   └── layout.js
+├── components/          # Reusable React components
+│   ├── ui/             # UI primitives (shadcn/ui)
+│   └── ...             # Feature components
+├── data/                # Static data and configurations
+│   ├── categories.js
+│   └── landing.js
+├── emails/              # Email templates
+│   └── template.jsx
+├── hooks/               # Custom React hooks
+│   └── use-fetch.js
+├── lib/                 # Core utilities and configurations
+│   ├── prisma.js       # Prisma client
+│   ├── utils.js        # Utility functions
+│   ├── arcjet/         # Security configurations
+│   └── inngest/        # Background job definitions
+├── prisma/              # Database schema and migrations
+│   ├── schema.prisma
+│   └── migrations/
+└── public/              # Static assets
 ```
-
-**Generated Insights:**
-- Spending pattern analysis
-- Budget recommendations
-- Savings opportunities
-- Category-wise suggestions
-
-### 4. Voice Processing
-
-#### **Speech-to-Text**
-- Real-time voice input
-- Transaction creation from speech
-- Natural language processing
-- Context-aware parsing
 
 ---
 
-## API Architecture
+## 🎯 Usage
 
-### RESTful Design
+### Creating an Account
 
-#### **Account Management**
+1. Navigate to `/sign-up`
+2. Complete the registration form
+3. Verify your email (if required)
+4. Set up your first financial account
+
+### Adding Transactions
+
+#### Method 1: Manual Entry
+1. Go to Dashboard
+2. Click "Add Transaction"
+3. Fill in the details (amount, category, description)
+4. Submit
+
+#### Method 2: SMS Parsing
+1. Click "Parse SMS" in the transaction menu
+2. Paste your bank SMS message
+3. AI will extract transaction details
+4. Review and confirm
+
+#### Method 3: Voice Input
+1. Click the microphone icon
+2. Speak your transaction details
+3. AI processes and creates the transaction
+
+#### Method 4: Receipt Scanning
+1. Click "Scan Receipt"
+2. Upload a receipt image
+3. AI extracts transaction data
+4. Confirm the details
+
+### Managing Budgets
+
+1. Navigate to your account page
+2. Click "Set Budget"
+3. Select category and set amount
+4. Monitor progress on the dashboard
+
+### Splitting Expenses
+
+1. Go to "Friends" section
+2. Add friends via email
+3. Create a split request
+4. Friends approve/decline via their dashboard
+5. Track settlement status
+
+---
+
+## 🔌 API Documentation
+
+### Account Endpoints
+
 ```
-GET    /api/account           - Get user accounts
-POST   /api/account           - Create new account
-PUT    /api/account/[id]      - Update account
-GET    /api/account/[id]/stats - Account statistics
+GET    /api/account              - Get all user accounts
+POST   /api/account              - Create new account
+PUT    /api/account/[id]         - Update account details
+GET    /api/account/[id]/stats   - Get account statistics
+GET    /api/account/[id]/transactions - Get account transactions
 ```
 
-#### **Transaction Operations**
+### Transaction Endpoints
+
 ```
-GET    /api/account/[id]/transactions - Get transactions
-POST   /api/transaction/parse-sms     - Parse SMS transaction
+POST   /api/transaction/parse-sms     - Parse SMS text
 POST   /api/transaction/parse-receipt - Parse receipt image
 ```
 
-#### **Split Management**
+### Split Endpoints
+
 ```
-GET    /api/splits                    - Get split requests
-POST   /api/splits                    - Create split request
-PUT    /api/splits/[id]/resolve       - Resolve split
+GET    /api/splits                     - Get split requests
+POST   /api/splits                     - Create split request
+PUT    /api/splits/[id]/resolve        - Approve/decline split
 ```
 
-### Server Actions
+### Friends Endpoints
 
-#### **Direct Database Operations**
+```
+GET    /api/friends                    - Get friends list
+POST   /api/friends                    - Send friend request
+PUT    /api/friends/[id]               - Accept/decline request
+DELETE /api/friends/[id]               - Remove friend
+```
+
+---
+
+## 🗄️ Database Schema
+
+### Key Models
+
+#### User
+- Manages user authentication and profile
+- Links to Clerk authentication
+
+#### Account
+- Multiple accounts per user (checking, savings)
+- Tracks balance and account type
+
+#### Transaction
+- Records income and expenses
+- Linked to accounts and categories
+- Supports recurring transactions
+
+#### Budget
+- Monthly budget limits per category
+- Tracks spending against limits
+
+#### SplitRequest
+- Manages expense splitting between users
+- Tracks approval status and settlements
+
+#### Friendship
+- User-to-user relationships
+- Enables split expense functionality
+
+For detailed schema, see [prisma/schema.prisma](prisma/schema.prisma)
+
+---
+
+## 🔐 Security Features
+
+- **Authentication**: Clerk-based authentication with MFA support
+- **Authorization**: Row-level security with user isolation
+- **Input Validation**: Zod schema validation on all inputs
+- **SQL Injection Protection**: Prisma ORM parameterized queries
+- **Rate Limiting**: Arcjet protection against abuse
+- **CORS**: Configured for secure API access
+- **Environment Variables**: Sensitive data protection
+- **HTTPS**: SSL/TLS encryption in production
+
+---
+
+## 🎨 Customization
+
+### Adding New Categories
+
+Edit `data/categories.js`:
+
 ```javascript
-// Server actions for seamless data operations
-export async function createTransaction(data) {
-  const { userId } = await auth();
-  const transaction = await db.transaction.create({
-    data: { ...data, userId }
-  });
-  revalidatePath('/dashboard');
-  return { success: true, data: transaction };
+export const categories = [
+  { value: "your-category", label: "Your Category", icon: "🎯" },
+  // ... more categories
+];
+```
+
+### Customizing Theme
+
+Modify `app/globals.css` for theme colors:
+
+```css
+:root {
+  --primary: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  /* ... customize colors */
 }
 ```
 
-**Benefits:**
-- Reduced API complexity
-- Better type safety
-- Automatic revalidation
-- Optimized performance
-
 ---
 
-## Security & Authentication
+## 🧪 Testing
 
-### Authentication Flow
+```bash
+# Run tests (if available)
+npm test
 
-#### **Clerk Integration**
-```javascript
-// Secure user authentication
-const { userId } = await auth();
-if (!userId) throw new Error("Unauthorized");
+# Run linting
+npm run lint
 
-const user = await db.user.findUnique({
-  where: { clerkUserId: userId }
-});
-```
-
-### Security Measures
-
-#### **Data Protection**
-- Row-level security with user isolation
-- Input validation with Zod schemas
-- SQL injection prevention with Prisma
-- XSS protection with Next.js
-
-#### **API Security**
-- Authentication middleware
-- Rate limiting with Arcjet
-- CORS configuration
-- Environment variable protection
-
-### Database Security
-
-#### **User Isolation**
-```sql
--- All queries filtered by userId
-WHERE userId = $1 AND accountId = $2
-```
-
-#### **Transaction Integrity**
-```javascript
-// Atomic operations for financial data
-await db.$transaction(async (tx) => {
-  await tx.account.update({...});
-  await tx.transaction.create({...});
-});
+# Type checking (if TypeScript)
+npm run type-check
 ```
 
 ---
 
-## Deployment & Infrastructure
+## 📦 Building for Production
 
-### Production Configuration
+```bash
+# Build the application
+npm run build
 
-#### **Next.js Optimization**
-```javascript
-// next.config.mjs
-const nextConfig = {
-  experimental: {
-    serverActions: {
-      bodySizeLimit: "5mb", // For receipt uploads
-    },
-  },
-  images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'randomuser.me' }
-    ],
-  },
-};
+# Start production server
+npm start
 ```
-
-#### **Environment Variables**
-```
-DATABASE_URL=postgresql://...
-DIRECT_URL=postgresql://...
-CLERK_SECRET_KEY=...
-GEMINI_API_KEY=...
-INNGEST_EVENT_KEY=...
-```
-
-### Performance Optimizations
-
-#### **Database Optimization**
-- Strategic indexing
-- Query optimization
-- Connection pooling
-- Prepared statements
-
-#### **Frontend Optimization**
-- Code splitting
-- Image optimization
-- Lazy loading
-- Server-side rendering
-
-#### **Caching Strategy**
-- Static generation for landing pages
-- Dynamic rendering for user data
-- API response caching
-- Database query caching
 
 ---
 
-## Performance Optimizations
+## 🚀 Deployment
 
-### Frontend Performance
+### Vercel (Recommended)
 
-#### **Code Splitting**
-```javascript
-// Dynamic imports for heavy components
-const ReceiptScanner = dynamic(() => import('./recipt-scanner'), {
-  loading: () => <Loader2 className="animate-spin" />
-});
-```
+1. Push your code to GitHub
+2. Import project in [Vercel](https://vercel.com)
+3. Configure environment variables
+4. Deploy automatically
 
-#### **Image Optimization**
-```javascript
-// Next.js Image component
-<Image
-  src="/logo.png"
-  alt="Welth Logo"
-  width={200}
-  height={50}
-  priority
-/>
-```
+### Manual Deployment
 
-### Backend Performance
-
-#### **Database Indexes**
-```sql
--- Optimized for common queries
-CREATE INDEX idx_transactions_user_date ON transactions(userId, date);
-CREATE INDEX idx_accounts_user ON accounts(userId);
-```
-
-#### **Connection Pooling**
-```javascript
-// Prisma connection pooling
-const db = new PrismaClient({
-  datasources: {
-    db: {
-      url: process.env.DATABASE_URL,
-    },
-  },
-});
-```
-
-### Monitoring & Analytics
-
-#### **Error Tracking**
-- Comprehensive error logging
-- User-friendly error messages
-- Performance monitoring
-- Real-time alerts
+1. Set up PostgreSQL database
+2. Configure all environment variables
+3. Run `npm run build`
+4. Start with `npm start`
+5. Set up reverse proxy (nginx/Apache)
 
 ---
 
-## Future Enhancements
+## 🤝 Contributing
 
-### Short-term (Next 3 months)
+Contributions are welcome! Please follow these steps:
 
-#### **Enhanced AI Features**
-- **Predictive Analytics**: Spending trend prediction
-- **Smart Notifications**: Context-aware alerts
-- **Expense Forecasting**: Monthly spending predictions
-- **Investment Tracking**: Portfolio management integration
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-#### **Mobile Application**
-- **React Native**: Cross-platform mobile app
-- **Offline Support**: Local data synchronization
-- **Push Notifications**: Real-time updates
-- **Biometric Authentication**: Fingerprint/Face ID
+### Development Guidelines
 
-#### **Advanced Integrations**
-- **Bank API Integration**: Direct bank account sync
-- **Credit Card Integration**: Automatic transaction import
-- **Investment Platforms**: Portfolio tracking
-- **Tax Preparation**: Automated tax categorization
-
-### Medium-term (6-12 months)
-
-#### **Social Features**
-- **Family Accounts**: Shared family budgets
-- **Group Challenges**: Savings competitions
-- **Financial Coaching**: AI-powered advice
-- **Community Features**: Financial tips sharing
-
-#### **Advanced Analytics**
-- **Machine Learning Models**: Custom spending predictions
-- **Behavioral Analysis**: Spending habit insights
-- **Goal Setting**: SMART financial goals
-- **Progress Tracking**: Visual goal achievement
-
-#### **Enterprise Features**
-- **Business Accounts**: Company expense management
-- **Team Budgets**: Department-wise allocation
-- **Approval Workflows**: Multi-level approvals
-- **Reporting Dashboard**: Executive summaries
-
-### Long-term (1-2 years)
-
-#### **AI-Powered Financial Assistant**
-- **Conversational AI**: Natural language interactions
-- **Personalized Advice**: Custom financial recommendations
-- **Risk Assessment**: Investment risk analysis
-- **Life Event Planning**: Major purchase planning
-
-#### **Blockchain Integration**
-- **Cryptocurrency Tracking**: Crypto portfolio management
-- **DeFi Integration**: Decentralized finance features
-- **Smart Contracts**: Automated financial agreements
-- **Digital Identity**: Blockchain-based verification
-
-#### **Global Expansion**
-- **Multi-Currency Support**: Real-time exchange rates
-- **Regional Compliance**: Local financial regulations
-- **Localization**: Multi-language support
-- **Regional Partnerships**: Local bank integrations
+- Follow the existing code style
+- Write meaningful commit messages
+- Add tests for new features
+- Update documentation as needed
+- Ensure all tests pass before submitting PR
 
 ---
 
-## Conclusion
+## 🐛 Known Issues & Troubleshooting
 
-Welth represents a modern approach to personal finance management, combining cutting-edge technologies with user-centric design. The platform's architecture is built for scalability, security, and performance, while the AI integration provides intelligent insights that help users make better financial decisions.
+### Issue: Prisma Client Not Generated
+```bash
+npx prisma generate
+```
 
-### Key Success Factors
+### Issue: Database Connection Failed
+- Check DATABASE_URL in `.env`
+- Ensure PostgreSQL is running
+- Verify network connectivity
 
-1. **Technology Choice**: Modern, proven technologies that scale
-2. **User Experience**: Intuitive design with powerful features
-3. **AI Integration**: Smart automation and insights
-4. **Security**: Enterprise-grade security measures
-5. **Performance**: Optimized for speed and reliability
+### Issue: Clerk Authentication Not Working
+- Verify CLERK keys in `.env`
+- Check Clerk dashboard for correct URLs
+- Ensure all NEXT_PUBLIC_ variables are set
 
-### Competitive Advantages
-
-- **AI-First Approach**: Advanced AI integration for smart features
-- **Multi-Modal Input**: Flexible transaction entry methods
-- **Social Finance**: Unique split expense functionality
-- **Real-time Analytics**: Live financial insights
-- **Modern Architecture**: Scalable and maintainable codebase
-
-Welth is positioned to become a leading financial management platform, leveraging the power of AI and modern web technologies to provide users with an unparalleled financial management experience.
+### Issue: AI Features Not Working
+- Verify GEMINI_API_KEY is correct
+- Check API quota limits
+- Review API endpoint accessibility
 
 ---
 
-*This document serves as a comprehensive technical overview of the Welth platform. For implementation details and code examples, please refer to the source code repository.*
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👨‍💻 Author
+
+**Kaustav**
+- GitHub: [@kaustav3071](https://github.com/kaustav3071)
+- Project: [Welth](https://github.com/kaustav3071/Welth---AI-Powered-Financial-Management-Platform)
+
+---
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org/) for the amazing framework
+- [Vercel](https://vercel.com/) for hosting platform
+- [Clerk](https://clerk.com/) for authentication
+- [Prisma](https://www.prisma.io/) for the ORM
+- [Shadcn/ui](https://ui.shadcn.com/) for beautiful components
+- [Google](https://ai.google.dev/) for Gemini AI
+- All open-source contributors
+
+---
+
+## 📮 Support
+
+For support, email your-email@example.com or open an issue on GitHub.
+
+---
+
+## 🗺️ Roadmap
+
+### Short-term
+- [ ] Mobile application (React Native)
+- [ ] Bank API integration
+- [ ] Investment tracking
+- [ ] Tax preparation tools
+
+### Long-term
+- [ ] AI financial advisor
+- [ ] Cryptocurrency support
+- [ ] Multi-currency support
+- [ ] Business accounts
+
+---
+
+<div align="center">
+  <p>Made with ❤️ by <a href="https://github.com/kaustav3071">Kaustav</a></p>
+  <p>⭐️ Star this repo if you find it helpful!</p>
+</div>
