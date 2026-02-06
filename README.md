@@ -1,10 +1,12 @@
 <div align="center">
+  <img src="my-app/public/logo.png" alt="Welth Logo" width="120" height="120" style="border-radius: 50%; margin-bottom: 20px;">
   <h1>💰 Welth</h1>
   <p><strong>AI-Powered Financial Management Platform</strong></p>
   
   <p>
     <a href="#features">Features</a> •
     <a href="#tech-stack">Tech Stack</a> •
+    <a href="#screenshots">Screenshots</a> •
     <a href="#getting-started">Getting Started</a> •
     <a href="#usage">Usage</a> •
     <a href="#api">API</a>
@@ -15,6 +17,13 @@
   ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue?style=for-the-badge&logo=postgresql)
   ![Prisma](https://img.shields.io/badge/Prisma-6.11.0-2D3748?style=for-the-badge&logo=prisma)
   ![TailwindCSS](https://img.shields.io/badge/Tailwind-4.x-38B2AC?style=for-the-badge&logo=tailwind-css)
+</div>
+
+---
+
+<div align="center">
+  <img src="my-app/public/banner.jpeg" alt="Welth Dashboard Banner" width="100%" style="max-width: 800px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  <p><em>Transform your financial management with AI-powered insights and seamless expense tracking</em></p>
 </div>
 
 ---
@@ -34,39 +43,92 @@
 
 ---
 
+## 📸 Screenshots
+
+<div align="center">
+
+### 🏠 Dashboard Overview
+<img src="https://via.placeholder.com/800x500/1a365d/ffffff?text=Dashboard+Screenshot" alt="Welth Dashboard" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+
+### 💳 Transaction Management
+<img src="https://via.placeholder.com/800x500/2d3748/f7fafc?text=Transaction+Management" alt="Transaction Interface" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+
+### 📊 Analytics & Charts
+<img src="https://via.placeholder.com/800x500/38a169/ffffff?text=Analytics+Dashboard" alt="Financial Analytics" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+
+### 👥 Split Expenses
+<img src="https://via.placeholder.com/800x500/805ad5/ffffff?text=Split+Expenses" alt="Expense Splitting" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+
+### 📱 Mobile Responsive
+<img src="https://via.placeholder.com/400x700/e53e3e/ffffff?text=Mobile+View" alt="Mobile Interface" width="40%" style="border-radius: 8px; margin: 20px 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+<img src="https://via.placeholder.com/400x700/d69e2e/ffffff?text=Tablet+View" alt="Tablet Interface" width="40%" style="border-radius: 8px; margin: 20px 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+
+</div>
+
+> **Note**: Replace placeholder images with actual screenshots of your application for a more professional presentation.
+
+---
+
 ## 🚀 Features
 
 ### 💳 Transaction Management
+<div align="center">
+  <img src="https://via.placeholder.com/300x200/3182ce/ffffff?text=💳+Transaction+Input" alt="Transaction Management" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+  <img src="https://via.placeholder.com/300x200/38a169/ffffff?text=📱+Multi+Modal+Input" alt="Multi-Modal Input" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+</div>
+
 - **Multiple Input Methods**: Manual entry, voice input, SMS parsing, and receipt scanning
 - **Smart Categorization**: AI-powered automatic category detection
 - **Bulk Operations**: Import and manage transactions efficiently
 - **Receipt OCR**: Extract data from receipt images
 
 ### 📊 Dashboard & Analytics
+<div align="center">
+  <img src="https://via.placeholder.com/600x300/2d3748/f7fafc?text=📊+Real+Time+Analytics" alt="Dashboard Analytics" width="90%" style="border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+</div>
+
 - **Real-Time Overview**: Today's spending, monthly breakdown, and balance monitoring
 - **Interactive Charts**: Pie charts, bar graphs, and trend analysis
 - **Expense Tracking**: Category-wise spending visualization
 - **Budget Progress**: Visual budget monitoring with alerts
 
 ### 👥 Split Expenses
+<div align="center">
+  <img src="https://via.placeholder.com/300x200/805ad5/ffffff?text=👥+Friend+Management" alt="Friend Management" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+  <img src="https://via.placeholder.com/300x200/d69e2e/ffffff?text=💰+Split+Requests" alt="Split Requests" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+</div>
+
 - **Friend Management**: Add and manage friends for splitting
 - **Split Requests**: Create, approve, and track split expenses
 - **Automatic Calculations**: Smart amount distribution
 - **Payment Tracking**: Keep track of who owes what
 
 ### 💰 Budget Management
+<div align="center">
+  <img src="https://via.placeholder.com/600x250/e53e3e/ffffff?text=💰+Budget+Tracking" alt="Budget Management" width="90%" style="border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+</div>
+
 - **Monthly Budgets**: Set category-specific budgets
 - **Real-Time Tracking**: Monitor spending against budgets
 - **Alert System**: Automated notifications for budget breaches
 - **Historical Analysis**: Compare budget performance over time
 
 ### 🏦 Account Management
+<div align="center">
+  <img src="https://via.placeholder.com/300x200/3182ce/ffffff?text=🏦+Multi+Account" alt="Account Management" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+  <img src="https://via.placeholder.com/300x200/38a169/ffffff?text=📈+Account+Stats" alt="Account Statistics" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+</div>
+
 - **Multi-Account Support**: Manage current and savings accounts
 - **Balance Tracking**: Real-time balance updates
 - **Minimum Balance Alerts**: Get notified when balance is low
 - **Account Statistics**: Detailed insights per account
 
 ### 🤖 AI Features
+<div align="center">
+  <img src="https://via.placeholder.com/400x200/2d3748/f7fafc?text=🤖+AI+Powered+Features" alt="AI Features" width="90%" style="border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+</div>
+
 - **Transaction Parsing**: Natural language understanding for transactions
 - **Receipt Scanning**: OCR-based data extraction
 - **Financial Insights**: AI-generated spending analysis
@@ -98,6 +160,26 @@
 - **[Arcjet](https://arcjet.com/)** - Security and rate limiting
 - **[React Email](https://react.email/)** - Email template builder
 - **[Sonner](https://sonner.emilkowal.ski/)** - Toast notifications
+
+---
+
+## 🏗️ Architecture
+
+<div align="center">
+  <img src="https://via.placeholder.com/800x400/1a365d/ffffff?text=System+Architecture+Diagram" alt="Welth System Architecture" width="90%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  
+  <p><em>High-level architecture showing the interaction between frontend, backend, AI services, and database</em></p>
+</div>
+
+### System Components
+
+- **Frontend Layer**: Next.js 15 with React 19, Tailwind CSS, and Radix UI components
+- **API Layer**: Next.js API routes with server actions for data operations
+- **Database Layer**: PostgreSQL with Prisma ORM for type-safe database operations
+- **Authentication**: Clerk for user management and authentication
+- **AI Services**: Google Gemini 1.5 Flash for transaction parsing and insights
+- **Background Jobs**: Inngest for email notifications and scheduled tasks
+- **Security**: Arcjet for rate limiting and abuse protection
 
 ---
 
@@ -511,6 +593,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
+<div align="center">
+  <p><strong>Powered by Industry-Leading Technologies</strong></p>
+  
+  <div style="display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; margin: 20px 0;">
+    <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
+    <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
+    <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+    <img src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white" alt="Prisma">
+    <img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" alt="Google Cloud">
+    <img src="https://img.shields.io/badge/Clerk-6C47FF?style=for-the-badge&logo=clerk&logoColor=white" alt="Clerk">
+  </div>
+</div>
+
 - [Next.js](https://nextjs.org/) for the amazing framework
 - [Vercel](https://vercel.com/) for hosting platform
 - [Clerk](https://clerk.com/) for authentication
@@ -521,9 +616,18 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📮 Support
+## 📞 Support & Community
+
+<div align="center">
+  <img src="https://via.placeholder.com/600x200/2d3748/f7fafc?text=💬+Community+Support" alt="Community Support" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+</div>
 
 For support, email kaustavdas2027@gmail.com or open an issue on GitHub.
+
+**Community Channels:**
+- 🐛 [Issues](https://github.com/kaustav3071/Welth---AI-Powered-Financial-Management-Platform/issues) - Report bugs and request features
+- 💡 [Discussions](https://github.com/kaustav3071/Welth---AI-Powered-Financial-Management-Platform/discussions) - Share ideas and get help
+- 📖 [Documentation](https://github.com/kaustav3071/Welth---AI-Powered-Financial-Management-Platform/wiki) - Learn more about the project
 
 ---
 
@@ -544,6 +648,13 @@ For support, email kaustavdas2027@gmail.com or open an issue on GitHub.
 ---
 
 <div align="center">
-  <p>Made with ❤️ by <a href="https://github.com/kaustav3071">Kaustav</a></p>
-  <p>⭐️ Star this repo if you find it helpful!</p>
+  <img src="my-app/public/logo-sm.png" alt="Welth Logo Small" width="40" height="40" style="vertical-align: middle; margin-right: 10px;">
+  <p><strong>Made with ❤️ by <a href="https://github.com/kaustav3071">Kaustav</a></strong></p>
+  <p>⭐️ <a href="https://github.com/kaustav3071/Welth---AI-Powered-Financial-Management-Platform">Star this repo</a> if you find it helpful!</p>
+  
+  <div style="margin-top: 20px;">
+    <img src="https://img.shields.io/github/stars/kaustav3071/Welth---AI-Powered-Financial-Management-Platform?style=social" alt="GitHub Stars">
+    <img src="https://img.shields.io/github/forks/kaustav3071/Welth---AI-Powered-Financial-Management-Platform?style=social" alt="GitHub Forks">
+    <img src="https://img.shields.io/github/watchers/kaustav3071/Welth---AI-Powered-Financial-Management-Platform?style=social" alt="GitHub Watchers">
+  </div>
 </div>
