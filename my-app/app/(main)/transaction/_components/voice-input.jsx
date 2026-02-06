@@ -1,19 +1,25 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { Mic, MicOff, Loader2, Volume2 } from "lucide-react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { Mic, MicOff, Loader2, Volume2, Keyboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "sonner";
 import useFetch from "@/hooks/use-fetch";
 import { processVoiceInput } from "@/actions/transaction";
+
+const MAX_RETRIES = 2;
 
 export function VoiceInput({ onVoiceComplete }) {
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState("");
   const [isSupported, setIsSupported] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showTextFallback, setShowTextFallback] = useState(false);
+  const [textInput, setTextInput] = useState("");
   const recognitionRef = useRef(null);
+  const retryCountRef = useRef(0);
 
   const {
     loading: isProcessing,
@@ -22,129 +28,186 @@ export function VoiceInput({ onVoiceComplete }) {
     error: voiceError,
   } = useFetch(processVoiceInput);
 
-  useEffect(() => {
-    // Check if browser supports speech recognition
-    if (typeof window !== 'undefined') {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (SpeechRecognition) {
-        try {
-          setIsSupported(true);
-          recognitionRef.current = new SpeechRecognition();
-          recognitionRef.current.continuous = false;
-          recognitionRef.current.interimResults = false;
-          recognitionRef.current.lang = 'en-US';
-          recognitionRef.current.maxAlternatives = 1;
+  const initRecognition = useCallback(() => {
+    if (typeof window === "undefined") return;
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      setIsSupported(false);
+      return;
+    }
 
-        recognitionRef.current.onresult = (event) => {
-          const transcript = event.results[0][0].transcript;
-          setTranscript(transcript);
-          // Don't auto-process, wait for user to stop
-        };
+    try {
+      setIsSupported(true);
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = "en-US";
+      recognition.maxAlternatives = 1;
 
-        recognitionRef.current.onerror = (event) => {
-          console.error('Speech recognition error:', event.error);
-          
-          let errorMessage = "Voice recognition error";
-          let showError = true;
-          
-          switch (event.error) {
-            case 'network':
-              errorMessage = "Voice service requires internet connection. Please check your connection and try again.";
-              break;
-            case 'not-allowed':
-              errorMessage = "Microphone access denied. Please allow microphone access in your browser settings.";
-              break;
-            case 'no-speech':
-              errorMessage = "No speech detected. Please speak clearly and try again.";
-              showError = false; // Don't show error for no speech, just stop listening
-              break;
-            case 'audio-capture':
-              errorMessage = "Microphone not found. Please check your microphone is connected.";
-              break;
-            case 'service-not-allowed':
-              errorMessage = "Voice service not available. Please try again later.";
-              break;
-            case 'aborted':
-              showError = false; // Don't show error for manual stop
-              break;
-            default:
-              errorMessage = `Voice recognition error: ${event.error}`;
-          }
-          
-          if (showError) {
-            toast.error(errorMessage);
-          }
-          setIsListening(false);
-        };
+      recognition.onresult = (event) => {
+        const result = event.results[0][0].transcript;
+        setTranscript(result);
+        retryCountRef.current = 0; // Reset retry counter on success
+      };
 
-        recognitionRef.current.onend = () => {
-          setIsListening(false);
-        };
-        } catch (error) {
-          console.error('Error initializing speech recognition:', error);
-          setIsSupported(false);
+      recognition.onerror = (event) => {
+        console.error("Speech recognition error:", event.error);
+
+        let errorMessage = "Voice recognition error";
+        let showError = true;
+
+        switch (event.error) {
+          case "network":
+            // Auto-retry on transient network errors
+            if (retryCountRef.current < MAX_RETRIES) {
+              retryCountRef.current += 1;
+              console.log(
+                `Retrying speech recognition (${retryCountRef.current}/${MAX_RETRIES})...`
+              );
+              toast.info(
+                `Voice service connection issue. Retrying (${retryCountRef.current}/${MAX_RETRIES})...`
+              );
+              setTimeout(() => {
+                try {
+                  recognition.start();
+                } catch {
+                  setIsListening(false);
+                  setShowTextFallback(true);
+                  toast.error(
+                    "Voice service unavailable. Use the text input below instead."
+                  );
+                }
+              }, 500);
+              return; // Don't stop listening while retrying
+            }
+            errorMessage =
+              "Voice service couldn't connect to Google's speech servers. This can happen due to network/firewall settings. Use the text input below to type your transaction instead.";
+            setShowTextFallback(true);
+            break;
+          case "not-allowed":
+            errorMessage =
+              "Microphone access denied. Please allow microphone access in your browser settings.";
+            break;
+          case "no-speech":
+            errorMessage =
+              "No speech detected. Please speak clearly and try again.";
+            showError = false;
+            break;
+          case "audio-capture":
+            errorMessage =
+              "Microphone not found. Please check your microphone is connected.";
+            break;
+          case "service-not-allowed":
+            errorMessage =
+              "Voice service not available in this browser. Use the text input below instead.";
+            setShowTextFallback(true);
+            break;
+          case "aborted":
+            showError = false;
+            break;
+          default:
+            errorMessage = `Voice recognition error: ${event.error}`;
         }
-      } else {
-        setIsSupported(false);
-      }
+
+        if (showError) {
+          toast.error(errorMessage);
+        }
+        retryCountRef.current = 0;
+        setIsListening(false);
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+
+      recognitionRef.current = recognition;
+    } catch (error) {
+      console.error("Error initializing speech recognition:", error);
+      setIsSupported(false);
     }
   }, []);
 
   useEffect(() => {
+    initRecognition();
+  }, [initRecognition]);
+
+  useEffect(() => {
     if (voiceData && !isProcessing) {
       onVoiceComplete(voiceData);
-      toast.success("Voice input processed successfully!");
-      closeModal(); // Close modal after successful processing
+      toast.success("Input processed successfully!");
+      closeModal();
     }
   }, [voiceData, isProcessing]);
 
   useEffect(() => {
     if (voiceError && !isProcessing) {
-      toast.error(voiceError.message || "Failed to process voice input");
+      toast.error(voiceError.message || "Failed to process input");
     }
   }, [voiceError, isProcessing]);
 
   const openModal = () => {
     setIsModalOpen(true);
     setTranscript("");
+    setTextInput("");
+    retryCountRef.current = 0;
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
     setIsListening(false);
     setTranscript("");
+    setTextInput("");
+    setShowTextFallback(false);
+    retryCountRef.current = 0;
     if (recognitionRef.current) {
-      recognitionRef.current.stop();
+      try {
+        recognitionRef.current.stop();
+      } catch {
+        // Ignore errors when stopping
+      }
     }
   };
 
   const startListening = () => {
-    if (recognitionRef.current) {
-      // Check internet connection
-      if (!navigator.onLine) {
-        toast.error("No internet connection. Voice recognition requires internet access.");
-        return;
-      }
-      
-      setIsListening(true);
-      setTranscript("");
-      
-      // Add a small delay to ensure proper initialization
-      setTimeout(() => {
-        try {
-          recognitionRef.current.start();
-        } catch (error) {
-          console.error('Error starting speech recognition:', error);
-          toast.error("Voice recognition service unavailable. Please try the text input instead.");
-          setIsListening(false);
-        }
-      }, 100);
+    if (!recognitionRef.current) return;
+
+    if (!navigator.onLine) {
+      toast.error(
+        "No internet connection. Try the text input below instead."
+      );
+      setShowTextFallback(true);
+      return;
     }
+
+    setIsListening(true);
+    setTranscript("");
+    retryCountRef.current = 0;
+
+    // Re-initialize to clear any stale state
+    initRecognition();
+
+    setTimeout(() => {
+      try {
+        recognitionRef.current.start();
+      } catch (error) {
+        console.error("Error starting speech recognition:", error);
+        toast.error(
+          "Voice recognition unavailable. Use the text input below instead."
+        );
+        setIsListening(false);
+        setShowTextFallback(true);
+      }
+    }, 100);
   };
 
   const stopListening = () => {
     if (recognitionRef.current) {
-      recognitionRef.current.stop();
+      try {
+        recognitionRef.current.stop();
+      } catch {
+        // Ignore
+      }
       setIsListening(false);
     }
   };
@@ -155,8 +218,16 @@ export function VoiceInput({ onVoiceComplete }) {
     }
   };
 
+  const processTextInput = () => {
+    if (textInput.trim()) {
+      processVoiceFn(textInput);
+    }
+  };
+
   if (!isSupported) {
-    return null; // Don't show anything if not supported
+    // Even when speech recognition is unsupported, still show the button
+    // so users can access the text fallback
+    return null;
   }
 
   return (
@@ -255,9 +326,51 @@ export function VoiceInput({ onVoiceComplete }) {
               )}
             </div>
 
+            {/* Text Fallback Input */}
+            {showTextFallback && (
+              <div className="border-t pt-4 space-y-3">
+                <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                  <Keyboard className="h-4 w-4" />
+                  Type your transaction instead
+                </div>
+                <Textarea
+                  placeholder='e.g. "Spent 500 on groceries at BigBasket yesterday"'
+                  value={textInput}
+                  onChange={(e) => setTextInput(e.target.value)}
+                  rows={2}
+                  className="resize-none"
+                />
+                <Button
+                  onClick={processTextInput}
+                  disabled={isProcessing || !textInput.trim()}
+                  className="w-full bg-green-500 hover:bg-green-600 text-white"
+                >
+                  {isProcessing ? (
+                    <>
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      Processing...
+                    </>
+                  ) : (
+                    "Process & Fill"
+                  )}
+                </Button>
+              </div>
+            )}
+
+            {/* Toggle Text Input Link */}
+            {!showTextFallback && (
+              <button
+                type="button"
+                className="text-xs text-blue-500 hover:text-blue-700 underline w-full text-center"
+                onClick={() => setShowTextFallback(true)}
+              >
+                Prefer typing? Switch to text input
+              </button>
+            )}
+
             {/* Internet Connection Note */}
             <div className="text-xs text-orange-600 text-center">
-              Voice recognition requires internet connection
+              Voice recognition requires connection to Google&apos;s speech servers
             </div>
           </div>
         </DialogContent>

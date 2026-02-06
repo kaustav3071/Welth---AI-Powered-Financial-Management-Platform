@@ -105,7 +105,7 @@
 
 ### 💰 Budget Management
 <div align="center">
-  <img src="https://via.placeholder.com/600x250/e53e3e/ffffff?text=💰+Budget+Tracking" alt="Budget Management" width="90%" style="border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+  <img src="docs/budget.png" alt="Budget Management" width="90%" style="border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
 </div>
 
 - **Monthly Budgets**: Set category-specific budgets
@@ -116,7 +116,7 @@
 ### 🏦 Account Management
 <div align="center">
   <img src="docs/create-account.png" alt="Account Management" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-  <img src="https://via.placeholder.com/300x200/38a169/ffffff?text=📈+Account+Stats" alt="Account Statistics" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+  <img src="docs/account-status.png" alt="Account Statistics" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
 </div>
 
 - **Multi-Account Support**: Manage current and savings accounts
@@ -126,7 +126,7 @@
 
 ### 🤖 AI Features
 <div align="center">
-  <img src="https://via.placeholder.com/400x200/2d3748/f7fafc?text=🤖+AI+Powered+Features" alt="AI Features" width="90%" style="border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+  <img src="docs/ai fetaure.png" width="90%" style="border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
 </div>
 
 - **Transaction Parsing**: Natural language understanding for transactions
@@ -162,14 +162,6 @@
 - **[Sonner](https://sonner.emilkowal.ski/)** - Toast notifications
 
 ---
-
-## 🏗️ Architecture
-
-<div align="center">
-  <img src="https://via.placeholder.com/800x400/1a365d/ffffff?text=System+Architecture+Diagram" alt="Welth System Architecture" width="90%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-  
-  <p><em>High-level architecture showing the interaction between frontend, backend, AI services, and database</em></p>
-</div>
 
 ### System Components
 
@@ -618,32 +610,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support & Community
 
-<div align="center">
-  <img src="https://via.placeholder.com/600x200/2d3748/f7fafc?text=💬+Community+Support" alt="Community Support" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-</div>
-
 For support, email kaustavdas2027@gmail.com or open an issue on GitHub.
 
 **Community Channels:**
 - 🐛 [Issues](https://github.com/kaustav3071/Welth---AI-Powered-Financial-Management-Platform/issues) - Report bugs and request features
 - 💡 [Discussions](https://github.com/kaustav3071/Welth---AI-Powered-Financial-Management-Platform/discussions) - Share ideas and get help
 - 📖 [Documentation](https://github.com/kaustav3071/Welth---AI-Powered-Financial-Management-Platform/wiki) - Learn more about the project
-
----
-
-## 🗺️ Roadmap
-
-### Short-term
-- [ ] Mobile application (React Native)
-- [ ] Bank API integration
-- [ ] Investment tracking
-- [ ] Tax preparation tools
-
-### Long-term
-- [ ] AI financial advisor
-- [ ] Cryptocurrency support
-- [ ] Multi-currency support
-- [ ] Business accounts
 
 ---
 
