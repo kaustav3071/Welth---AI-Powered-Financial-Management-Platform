@@ -48,24 +48,24 @@
 <div align="center">
 
 ### 🏠 Dashboard Overview
-<img src="https://via.placeholder.com/800x500/1a365d/ffffff?text=Dashboard+Screenshot" alt="Welth Dashboard" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+<img src="docs/home.png" alt="Welth Dashboard" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
 ### 💳 Transaction Management
-<img src="https://via.placeholder.com/800x500/2d3748/f7fafc?text=Transaction+Management" alt="Transaction Interface" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+<img src="docs/create-transaction.png" alt="Transaction Interface" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
-### 📊 Analytics & Charts
-<img src="https://via.placeholder.com/800x500/38a169/ffffff?text=Analytics+Dashboard" alt="Financial Analytics" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+### 👥 Friends & Social Features
+<img src="docs/friends.png" alt="Friends Management" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
-### 👥 Split Expenses
-<img src="https://via.placeholder.com/800x500/805ad5/ffffff?text=Split+Expenses" alt="Expense Splitting" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+### 💰 Split Expenses
+<img src="docs/spilt.png" alt="Expense Splitting" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
-### 📱 Mobile Responsive
-<img src="https://via.placeholder.com/400x700/e53e3e/ffffff?text=Mobile+View" alt="Mobile Interface" width="40%" style="border-radius: 8px; margin: 20px 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-<img src="https://via.placeholder.com/400x700/d69e2e/ffffff?text=Tablet+View" alt="Tablet Interface" width="40%" style="border-radius: 8px; margin: 20px 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+### 🏦 Account Creation
+<img src="docs/create-account.png" alt="Account Creation" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+
+### 🤖 AI Voice Features
+<img src="docs/AI voice.png" alt="AI Voice Processing" width="80%" style="border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
 </div>
-
-> **Note**: Replace placeholder images with actual screenshots of your application for a more professional presentation.
 
 ---
 
@@ -73,8 +73,8 @@
 
 ### 💳 Transaction Management
 <div align="center">
-  <img src="https://via.placeholder.com/300x200/3182ce/ffffff?text=💳+Transaction+Input" alt="Transaction Management" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-  <img src="https://via.placeholder.com/300x200/38a169/ffffff?text=📱+Multi+Modal+Input" alt="Multi-Modal Input" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+  <img src="docs/create-transaction.png" alt="Transaction Management" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+  <img src="docs/AI voice.png" alt="AI Voice Input" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
 </div>
 
 - **Multiple Input Methods**: Manual entry, voice input, SMS parsing, and receipt scanning
@@ -84,7 +84,7 @@
 
 ### 📊 Dashboard & Analytics
 <div align="center">
-  <img src="https://via.placeholder.com/600x300/2d3748/f7fafc?text=📊+Real+Time+Analytics" alt="Dashboard Analytics" width="90%" style="border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+  <img src="docs/home.png" alt="Dashboard Analytics" width="90%" style="border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
 </div>
 
 - **Real-Time Overview**: Today's spending, monthly breakdown, and balance monitoring
@@ -94,8 +94,8 @@
 
 ### 👥 Split Expenses
 <div align="center">
-  <img src="https://via.placeholder.com/300x200/805ad5/ffffff?text=👥+Friend+Management" alt="Friend Management" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-  <img src="https://via.placeholder.com/300x200/d69e2e/ffffff?text=💰+Split+Requests" alt="Split Requests" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+  <img src="docs/friends.png" alt="Friend Management" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+  <img src="docs/spilt.png" alt="Split Requests" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
 </div>
 
 - **Friend Management**: Add and manage friends for splitting
@@ -115,7 +115,7 @@
 
 ### 🏦 Account Management
 <div align="center">
-  <img src="https://via.placeholder.com/300x200/3182ce/ffffff?text=🏦+Multi+Account" alt="Account Management" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+  <img src="docs/create-account.png" alt="Account Management" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
   <img src="https://via.placeholder.com/300x200/38a169/ffffff?text=📈+Account+Stats" alt="Account Statistics" width="45%" style="border-radius: 8px; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
 </div>
 
